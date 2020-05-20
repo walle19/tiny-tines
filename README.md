@@ -1,4 +1,4 @@
-#Tiny Tines
+# Tiny Tines
 
 Perform sequential actions based on different agents
 
@@ -22,7 +22,7 @@ _`helper.js`_ providing method to read JSON file and parse the message/URL with 
 _`logger.js`_ for printing logs using _`console.log`_ 
 
 ##
-###App Specs
+### App Specs
 
 Build on
 > NodeJS App <br>
@@ -42,7 +42,7 @@ sinon-chai <br>
 nock
 
 ##
-###Pre-requirement
+### Prerequisites
 Install the `node.js` LTS version from [Node website](https://nodejs.org/en/) and npm gets installed along with node.
 
 Install all dependencies in package.json
@@ -52,7 +52,7 @@ npm install
 ```
 
 ##
-###Running App
+### Running App
 
 Run below command using node command
 
@@ -92,7 +92,7 @@ npm run example
 ```
 
 ##
-###Test
+### Test
 
 Test files are located under **/test** directory
 
@@ -109,10 +109,10 @@ npm run test-single --file={file name}
 ```
 
 ##
-###Future Scope
+### Future Scope
 
 ##
-###Troubleshooting
+### Troubleshooting
 1. For viewing trace logs please set **_`IS_DEBUG`_** to true in `utility/constant.js` file
 1. App crash due to 502 http error (Bad Gateway)
 
