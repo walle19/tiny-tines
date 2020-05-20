@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "bin/index.js",
   "scripts": {
-    "exec": "node bin/index.js",
+    "start": "node bin/index.js",
     "example": "node bin/index.js stubs/tiny-tines-sunset.json",
     "test": "mocha",
     "test-single": "mocha test/$npm_config_file"

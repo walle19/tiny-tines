@@ -1,10 +1,14 @@
 #Tiny Tines
 
-Tiny Tines is replicating one of the features provided by the [Tines](https://www.tines.io) of running Agents in a provided sequence.
+Perform sequential actions based on different agents
 
 Agents Type
 1. HTTPRequestAgent 
 2. PrintAgent
+
+Actions available
+1. HTTP request
+2. Display message on console
 
 Directory Structure is as follow:
 
@@ -34,7 +38,8 @@ Unit Testing
 > chai <br>
 mocha <br>
 sinon <br>
-sinon-chai
+sinon-chai <br>
+nock
 
 ##
 ###Pre-requirement
@@ -51,7 +56,9 @@ npm install
 
 Run below command using node command
 
-`node bin/index.js {JSON filePath}`
+```
+node bin/index.js {JSON filePath}
+```
 
 Example
 
@@ -103,12 +110,10 @@ npm run test-single --file={file name}
 
 ##
 ###Future Scope
-Considering the App is currently **command-line, synchronous request are made**. 
-For future, as App turns out to be UI based then we can move to **Asynchronous approach for making request**.
-This is due to sync request uses the main thread and will block the UI rendering, thereby leading to bad user experience.
 
 ##
 ###Troubleshooting
+1. For viewing trace logs please set **_`IS_DEBUG`_** to true in `utility/constant.js` file
 1. App crash due to 502 http error (Bad Gateway)
 
 Due to too many request to a server in a short span of period.
