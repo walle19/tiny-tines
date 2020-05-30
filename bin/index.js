@@ -54,16 +54,16 @@ const main  = function() {
 * @return - None
 */
 const createAndRunAgentsFrom = async function(agents, fetchedData) {
-    for (const info of agents) {
+    for (const agentInfo of agents) {
         let agent
 
-        switch (info.type) {
+        switch (agentInfo.type) {
             case CONSTANTS.AGENT_TYPES.HTTP:
-                agent = new HttpAgent(info, fetchedData)
+                agent = new HttpAgent(agentInfo, fetchedData)
 
                 let response
                 try {
-                    response = await agent.getInfo()
+                    response = await agent.makeRequest()
                     logger.trace(response)
                 } catch (err) {
                     logger.error(err)
@@ -73,7 +73,7 @@ const createAndRunAgentsFrom = async function(agents, fetchedData) {
                 fetchedData[agent.name] = response
                 break
             case CONSTANTS.AGENT_TYPES.PRINT:
-                agent = new PrintAgent(info, fetchedData)
+                agent = new PrintAgent(agentInfo, fetchedData)
                 agent.printMessage(fetchedData)
                 break
             default:

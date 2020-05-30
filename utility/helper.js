@@ -49,9 +49,9 @@ module.exports = {
 
             let value = data
 
-            for (const key of keys) {   // Iterating through all keys
+            for (const key of keys) { 
                 if (!value[key]) return ""
-                value = value[key]  // Update the value with existing object found
+                value = value[key] 
             }
 
             return value

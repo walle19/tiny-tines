@@ -26,14 +26,6 @@ class Agent {
 * Extends Agent
 * @param - (Object) details, (Object) response
 * @return - Object
-
-Example Input::
-    {
-        "type": "HTTPRequestAgent",
-        "name": "location",
-        "options": {
-            "url": "http://free.ipwhois.io/json/"
-    }
 */
 class HttpAgent extends Agent {
     constructor(details, response) {
@@ -42,7 +34,7 @@ class HttpAgent extends Agent {
         this.url = isEmpty(details.options) && isEmpty(details.options.url) ? '' : parseTemplate(details.options.url, response)
     }
 
-    getInfo() {
+    makeRequest() {
         let URL = this.url,
               request = new XMLHttpRequest()
 
@@ -74,14 +66,6 @@ class HttpAgent extends Agent {
 * Extends Agent
 * @param - (Object) details, (Object) response
 * @return - Object
-
-Example Input::
-    {
-        "type": "PrintAgent",
-        "name": "print",
-        "options": {
-            "message": "Sunset in {{ location.city }}"
-    }
 */
 class PrintAgent extends Agent {
     constructor(details, response) {

@@ -101,7 +101,7 @@ describe('[Test] Agent', () => {
                     status: 200,
                     text: ipResponse})
 
-            httpAgent.getInfo().then(function(res) {
+            httpAgent.makeRequest().then(function(res) {
                 expect(res.status).to.be.eql(200)
                 expect(res.text).to.be.eql(ipResponse)
                 done()
@@ -115,7 +115,7 @@ describe('[Test] Agent', () => {
                     status: 204
                 })
 
-            httpAgent.getInfo().catch(function(rej) {
+            httpAgent.makeRequest().catch(function(rej) {
                 expect(rej).to.match(/204/)
                 done()
             })
@@ -123,7 +123,7 @@ describe('[Test] Agent', () => {
 
         it('should return invalid URL for GET', (done) => {
             httpAgent.url = ''
-            httpAgent.getInfo().catch(function(rej) {
+            httpAgent.makeRequest().catch(function(rej) {
                 expect(rej).to.be.equal(CONSTANTS.HTTP_AGENT.URL_INVALID)
                 done()
             })
@@ -134,7 +134,7 @@ describe('[Test] Agent', () => {
                 .intercept('/json/', 'GET')
                 .reply(200, {})
 
-            httpAgent.getInfo().catch(function(rej) {
+            httpAgent.makeRequest().catch(function(rej) {
                 console.log("rej")
                 expect(rej).to.equal(CONSTANTS.HTTP_AGENT.INVALID_RESPONSE)
                 done()
