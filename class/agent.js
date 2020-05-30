@@ -96,7 +96,7 @@ class PrintAgent extends Agent {
             return ""
         }
 
-        return this.message
+        logger.print(this.message)
     }
 }
 

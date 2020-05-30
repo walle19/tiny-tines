@@ -4,6 +4,7 @@ const ipResponse = require('../stubs/ip_response')
 const sunsetResponse = require('../stubs/sunset_response')
 const nock = require('nock')
 const CONSTANTS = require('../utility/constants')
+const sinon = require("sinon")
 
 describe('[Test] Agent', () => {
 
@@ -147,6 +148,8 @@ describe('[Test] Agent', () => {
             agentInfo,
             data
 
+        before(() => { sandbox = sinon.createSandbox() })
+
         beforeEach(() => {
             agentInfo = {
                 "type": "PrintAgent",
@@ -187,8 +190,12 @@ describe('[Test] Agent', () => {
         })
 
         it('should PrintAgent display the parsed message', () => {
-            expect(printAgent.printMessage()).to.be.equal("Sunset in Dublin, Ireland is at 7:30:37 PM.")
+            const log = sandbox.spy(console, 'log')
+            printAgent.printMessage()
+            expect(log).to.have.been.calledOnceWith("Sunset in Dublin, Ireland is at 7:30:37 PM.")
         })
+
+        after(() => sandbox.restore())
     })
 
     describe('[Test] Different JSON file', () => {

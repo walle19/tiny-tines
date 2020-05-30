@@ -9,8 +9,6 @@ describe('[Test] Logger', () => {
 
     before(() => { sandbox = sinon.createSandbox() })
 
-    beforeEach(() => { sandbox.restore() })
-
     it('should call print once', () => {
         const log = sandbox.spy(console, 'log')
         logger.print('test')
@@ -28,6 +26,8 @@ describe('[Test] Logger', () => {
         logger.trace('test')
         expect(log).to.not.have.been.called
     })
+
+    afterEach(() => { sandbox.restore() })
 
 })
 

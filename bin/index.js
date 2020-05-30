@@ -74,7 +74,7 @@ const createAndRunAgentsFrom = async function(agents, fetchedData) {
                 break
             case CONSTANTS.AGENT_TYPES.PRINT:
                 agent = new PrintAgent(info, fetchedData)
-                logger.print(agent.printMessage(fetchedData))
+                agent.printMessage(fetchedData)
                 break
             default:
                 throw CONSTANTS.AGENT.INVALID
