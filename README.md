@@ -109,7 +109,7 @@ npm run test-single --file={file name}
 ```
 
 ##
-### Update Scope
+### Updates
 
 | Date | Version  | Comment  |
 | :---:   | :-: | :-: |
