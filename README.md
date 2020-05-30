@@ -109,7 +109,17 @@ npm run test-single --file={file name}
 ```
 
 ##
+### Update Scope
+
+| Date | Version  | Comment  |
+| :---:   | :-: | :-: |
+| 20th May 2020 | 1.0 | Initial commit |
+| 31st May 2020 | 1.1 | Refactor Agent's functionality leaking outside and update of respective test-cases |
+
+##
 ### Future Scope
+
+* Add a basic URL validator
 
 ##
 ### Troubleshooting
