@@ -61,21 +61,14 @@ const createAndRunAgentsFrom = async function(agents, fetchedData) {
             case CONSTANTS.AGENT_TYPES.HTTP:
                 agent = new HttpAgent(info, fetchedData)
 
-                if (isEmpty(agent.url)) {
-                    logger.error(CONSTANTS.HTTP_AGENT.URL_INVALID)
-                    return                          // stop the execution
-                }
-
                 let response
                 try {
                     response = await agent.getInfo()
                     logger.trace(response)
                 } catch (err) {
-                    logger.error(`${err}: ` + CONSTANTS.HTTP_AGENT.STATUS)
+                    logger.error(err)
                     return                          // stop the execution
                 }
-
-                if (isEmpty(response)) { return }   // stop the execution
 
                 fetchedData[agent.name] = response
                 break

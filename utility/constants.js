@@ -25,7 +25,8 @@ module.exports = {
 
     HTTP_AGENT: {
         URL_INVALID: "Invalid URL encountered",
-        STATUS: "Request failed"
+        STATUS: "Request failed",
+        INVALID_RESPONSE: "Invalid response received"
     },
 
     PRINT_AGENT: {

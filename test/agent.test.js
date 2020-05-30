@@ -3,6 +3,7 @@ const { HttpAgent, PrintAgent } = require('../class/agent')
 const ipResponse = require('../stubs/ip_response')
 const sunsetResponse = require('../stubs/sunset_response')
 const nock = require('nock')
+const CONSTANTS = require('../utility/constants')
 
 describe('[Test] Agent', () => {
 
@@ -114,7 +115,27 @@ describe('[Test] Agent', () => {
                 })
 
             httpAgent.getInfo().catch(function(rej) {
-                expect(rej).to.be.equal(204)
+                expect(rej).to.match(/204/)
+                done()
+            })
+        })
+
+        it('should return invalid URL for GET', (done) => {
+            httpAgent.url = ''
+            httpAgent.getInfo().catch(function(rej) {
+                expect(rej).to.be.equal(CONSTANTS.HTTP_AGENT.URL_INVALID)
+                done()
+            })
+        })
+
+        it('should return invalid response error for GET', (done) => {
+            nock('http://free.ipwhois.io')
+                .intercept('/json/', 'GET')
+                .reply(200, {})
+
+            httpAgent.getInfo().catch(function(rej) {
+                console.log("rej")
+                expect(rej).to.equal(CONSTANTS.HTTP_AGENT.INVALID_RESPONSE)
                 done()
             })
         })

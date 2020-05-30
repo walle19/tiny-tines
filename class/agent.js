@@ -43,19 +43,23 @@ class HttpAgent extends Agent {
     }
 
     getInfo() {
-        //  Make request call
-        const URL = this.url,
+        let URL = this.url,
               request = new XMLHttpRequest()
 
         return new Promise(function(resolve, reject) {
+            if (URL.length === 0) return reject(CONSTANTS.HTTP_AGENT.URL_INVALID)
             request.responseType = 'json'
             request.onreadystatechange = function() {
                 if (request.readyState === 4) {
                     if (request.status === 200) {
-                        resolve(JSON.parse(request.responseText))
+                        const responseJSON = JSON.parse(request.responseText)
+                        
+                        if (isEmpty(responseJSON)) reject(CONSTANTS.HTTP_AGENT.INVALID_RESPONSE)
+                        
+                        resolve(responseJSON)
                     }
                     else {
-                        reject(request.status)
+                        reject(request.status+' : '+CONSTANTS.HTTP_AGENT.STATUS)
                     }
                 }
             }
